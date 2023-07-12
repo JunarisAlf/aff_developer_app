@@ -13,15 +13,10 @@ class UserSeeder extends Seeder
      */
     public function run(): void
     {
+  
         User::create([
-            'username'      => 'master',
-            'full_name'     => 'Fulan bin Fulan',
-            'password'      => '123123',
-            'role'          => 'master',
-            'profile_image' => 'default_profile_img.png'
-        ]);
-        User::create([
-            'username'      => 'admin',
+            'email'         => 'admin@gmail.com',
+            'wa_number'     => '6282284393018',
             'full_name'     => 'Akun Admin',
             'password'      => '123123',
             'role'          => 'admin',
@@ -29,20 +24,22 @@ class UserSeeder extends Seeder
 
         ]);
         User::create([
-            'username'      => 'gudang',
-            'full_name'     => 'Akun Gudang',
+            'email'         => 'marketing@gmail.com',
+            'wa_number'     => '6282284393019',
+            'full_name'     => 'Akun Marketing',
             'password'      => '123123',
-            'role'          => 'gudang',
+            'role'          => 'marketing',
+            'confirmed'     => true,
             'profile_image' => 'default_profile_img.png'
-
         ]);
         User::create([
-            'username'      => 'general',
-            'full_name'     => 'Akun General',
+            'email'         => 'marketing2@gmail.com',
+            'wa_number'     => '6282284393020',
+            'full_name'     => 'Akun Marketing 2',
             'password'      => '123123',
-            'role'          => 'general',
+            'role'          => 'marketing',
+            'confirmed'     => false,
             'profile_image' => 'default_profile_img.png'
-
         ]);
     }
 }

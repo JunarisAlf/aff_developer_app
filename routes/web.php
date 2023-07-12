@@ -18,6 +18,8 @@ use Illuminate\Support\Facades\Route;
 */
 Route::middleware('guest')->group(function(){
     Route::get('/login', [AuthController::class, 'login'])->name('login_page');
+    Route::get('/register', [AuthController::class, 'marketingRegister'])->name('register_page');
+
 });
 
 Route::middleware('auth')->group(function(){
@@ -25,12 +27,11 @@ Route::middleware('auth')->group(function(){
     Route::get('/ubah-password', [AuthController::class, 'changePassword'])->name('changePassword');
     Route::get('/profile', [UserController::class, 'profile'])->name('profile');
 
-
     Route::get('/dashboard',  [DashboardController::class, 'index'])->name('admin.dashboard');
     Route::get('/atur-pengguna',  [UserController::class, 'manageUserPage'])->name('admin.manageUser');
     
-    Route::prefix('/master-data')->group(function(){
-        Route::get('/cabang',  [CabangController::class, 'index'])->name('admin.master.cabang');
-
+    Route::prefix('/marketing')->group(function(){
+        Route::get('/daftar-marketing',  [UserController::class, 'marketingList'])->name('admin.marketing.list');
+        Route::get('/permintaan-gabung',  [UserController::class, 'marketingRequest'])->name('admin.marketing.request');
     });
 });

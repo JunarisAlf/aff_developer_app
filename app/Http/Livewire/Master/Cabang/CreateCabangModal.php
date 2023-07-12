@@ -9,6 +9,8 @@ class CreateCabangModal extends Component{
     protected $listeners = ['openCreateModal' => 'openModal'];
     public function openModal(){
         $this->show = true;
+        $this->emit('showDangerAlert', 'dsd');
+
     }
     public function render(){
         return view('livewire.master.cabang.create-cabang-modal');

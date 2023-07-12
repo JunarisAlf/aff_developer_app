@@ -1,6 +1,5 @@
  <!-- ========== Left Sidebar Start ========== -->
  <div class="vertical-menu rtl:right-0 fixed ltr:left-0 bottom-0 top-16 h-screen border-r bg-slate-50 border-gray-50 print:hidden dark:bg-zinc-800 dark:border-neutral-700 z-10">
-    
     <div data-simplebar class="h-full">
         <!--- Sidemenu -->
         <div id="sidebar-menu">
@@ -8,41 +7,44 @@
             <ul class="metismenu" id="side-menu">
                 <li class="menu-heading px-4 py-3.5 text-xs font-medium text-gray-500 cursor-default" data-key="t-menu">Menu</li>
                 <li >
-                    <a href="{{route('admin.dashboard')}}" class="pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
-                        <i data-feather="home"></i>
+                    <a href="{{route('admin.dashboard')}}" aria-expanded="false" class="pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
+                        <i data-feather="pie-chart"></i>
                         <span data-key="t-dashboard">Dashboard</span>
                     </a>
                 </li>
 
+               
+
                  {{-- START MASTER DATA --}}
-                 <li >
-                    <a href="javascript: void(0);" class="pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
-                        <i data-feather="list"></i>
-                        <span >Data Master</span>
+                 <li>
+                    <a href="javascript: void(0);" aria-expanded="false" class="nav-menu pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
+                        <i data-feather="home"></i>
+                        <span data-key="t-property">Property</span>
                     </a>
                     <ul>
                         <li>
-                            <a href="/sdfdfs"  class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Data Toko</a>
+                            <a href="/sdfdfs" class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Data Property</a>
                         </li>
-                        <li>
-                            <a href="{{route('admin.master.cabang')}}" class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Data Cabang</a>
-                        </li>
+                       
                     </ul>
                 </li>
                 {{-- END MASTER DATA --}}
 
                 {{-- START USER --}}
                 <li >
-                    <a href="javascript: void(0);" class="pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
+                    <a href="javascript: void(0);" aria-expanded="false" class="nav-menu pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
                         <i data-feather="users"></i>
-                        <span data-key="t-dashboard">Penguna</span>
+                        <span data-key="t-pengguna">Marketing</span>
                     </a>
                     <ul>
                         <li>
-                            <a href="{{route('admin.manageUser')}}"  class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Daftar Pengguna</a>
+                            <a href="{{route('admin.marketing.list')}}"  class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Tim Marketing</a>
                         </li>
                         <li>
-                            <a href="/dsfdsfsd" class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">User Log</a>
+                            <a href="{{route('admin.marketing.request')}}"  class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Permintaan Gabung</a>
+                        </li>
+                        <li>
+                            <a href="/dsfdsfsd" class="pl-14 pr-4 py-2 block text-[13.5px] font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">Laporan Marketing</a>
                         </li>
                     </ul>
                 </li>
@@ -50,7 +52,7 @@
                 <li>
                     <a href="javascript: void(0);" aria-expanded="false" class="nav-menu pl-6 pr-4 py-3 block text-sm font-medium text-gray-700 transition-all duration-150 ease-linear hover:text-violet-500 dark:text-gray-300 dark:active:text-white dark:hover:text-white">
                         <i data-feather="user"></i>
-                        <span data-key="t-apps">Akun</span>
+                        <span data-key="t-account">Akun</span>
                     </a>
                     <ul>
                         <li>
@@ -82,3 +84,9 @@
     </div>
 </div>
 <!-- Left Sidebar End -->
+
+
+
+
+
+

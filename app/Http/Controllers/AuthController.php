@@ -19,6 +19,10 @@ class AuthController extends Controller{
         $user = Auth::user();
         return view('admin.pages.auth.change-password', compact('user'));
     }
+
+    public function marketingRegister(){
+        return view('admin.pages.auth.marketing-register');
+    }
     
 }
 

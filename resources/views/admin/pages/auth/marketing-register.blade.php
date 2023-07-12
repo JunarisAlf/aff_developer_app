@@ -1,5 +1,5 @@
 @extends('admin.layout.APP')
-@section('page_title', 'LOGIN')
+@section('page_title', 'Daftar')
 @section('page_css')
     <link rel="stylesheet" href="{{asset('mania/libs/swiper/swiper-bundle.min.css')}}">
 @endsection
@@ -21,7 +21,7 @@
                             </a>
                         </div>
 
-                        @livewire('auth.login-page.form')
+                        @livewire('auth.register-page.form')
 
                         
                         <div class=" text-center">

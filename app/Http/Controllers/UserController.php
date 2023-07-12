@@ -16,4 +16,13 @@ class UserController extends Controller{
         $user = Auth::user();
         return view('admin.pages.user.manage', compact('user'));
     }
+
+    public function marketingRequest(){
+        $user = Auth::user();
+        return view('admin.pages.marketing.marketing-request', compact('user'));
+    }
+    public function marketingList(){
+        $user = Auth::user();
+        return view('admin.pages.marketing.marketing-list', compact('user'));
+    }
 }

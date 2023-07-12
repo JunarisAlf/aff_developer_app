@@ -11,6 +11,7 @@ class DangerAlert extends Component{
         $this->show = true;
         $this->message = $message;
     }
+ 
     public function render(){
         return view('livewire.utils.alert.danger-alert');
     }
