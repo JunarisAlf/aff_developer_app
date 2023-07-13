@@ -18,21 +18,15 @@ class UserFactory extends Factory
     public function definition(): array
     {
         return [
-            'name' => fake()->name(),
-            'email' => fake()->unique()->safeEmail(),
-            'email_verified_at' => now(),
-            'password' => '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi', // password
-            'remember_token' => Str::random(10),
+            'email'         => fake()->unique()->safeEmail(),
+            'wa_number'     => '628' . str_pad(rand(0, 9999999999), 10, '0', STR_PAD_LEFT),
+            'full_name'     => fake()->name(),
+            'password'      => '123123',
+            'role'          => 'marketing',
+            'confirmed'     => fake()->randomElement([true, false]),
+            'suspended'     => fake()->randomElement([true, false]),
+            'profile_image' => 'default_profile_img.png'
         ];
     }
-
-    /**
-     * Indicate that the model's email address should be unverified.
-     */
-    public function unverified(): static
-    {
-        return $this->state(fn (array $attributes) => [
-            'email_verified_at' => null,
-        ]);
-    }
+  
 }

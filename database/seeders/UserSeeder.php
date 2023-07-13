@@ -41,5 +41,7 @@ class UserSeeder extends Seeder
             'confirmed'     => false,
             'profile_image' => 'default_profile_img.png'
         ]);
+
+        User::factory()->count(100)->create();
     }
 }

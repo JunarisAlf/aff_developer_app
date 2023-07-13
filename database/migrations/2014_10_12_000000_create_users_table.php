@@ -18,6 +18,7 @@ return new class extends Migration
             $table->string('wa_number')->unique();
             $table->enum('role', ['admin', 'marketing'])->default('marketing');
             $table->boolean('confirmed')->default(false);
+            $table->boolean('suspended')->default(false);
             $table->string('password');
             $table->string('profile_image');
             $table->timestamps();

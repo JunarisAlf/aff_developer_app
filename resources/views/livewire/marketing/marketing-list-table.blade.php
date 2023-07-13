@@ -2,51 +2,54 @@
     <div class="col-span-12">
         <div class="card dark:bg-zinc-800 dark:border-zinc-600">
             <div class="card-body">
-                <div class="grid grid-cols-12 grid-row-1 gap-4 mb-8 mt-4">
-                    <div class="col-span-4">
-                        <div class="dataTables_length" id="datatable_length">
-                            <label>Show</label>
-                            <select name="datatable_length" class="bg-zinc-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"><option value="10">10</option><option value="25">25</option><option value="50">entries</option><option value="100">100</option></select>
-                            <label>Of 50 Entries</label>
-
+                <div class="w-full overflow-x-auto">
+                    <div class="flex flex-row  gap-6 mb-8 mt-4 items-center justify-between">
+                        <div class="w-[30%] min-w-max">
+                            <div class="flex flex-row items-center gap-2">
+                                <label>Show</label>
+                                <input class="w-16 rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-zinc-100" type="number" name="paginate_count" wire:model.lazy="paginate_count" id="example-email-input">
+                                <label>Of {{$data_count}} Entries</label>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-span-8">
-                        <form>
+                        <div class="w-[30%] flex items-center min-w-[250px]">
+                            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mr-3">Status</label>
+                            <select id="countries" class="bg-zinc-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" wire:model="status">
+                                <option selected>Pilih Kolom</option>
+                                @foreach ($statusSelect as $status)
+                                    <option value="{{$status['value']}}">{{$status['label']}}</option>
+                                @endforeach
+                            </select>
+                        </div>
+
+                        <div class="w-[40%] min-w-[350px]">
                             <div class="flex">
-                                <label for="search-dropdown" class="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">Your Email</label>
-                                <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-zinc-200 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-gray-700 dark:hover:bg-gray-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">All categories <svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
-                            <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/>
-                          </svg></button>
+                                
+                                <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-zinc-200 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">{{$searchField['label']}}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
+                                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> </svg>
+                                </button>
                                 <div id="dropdown" class="z-10 hidden bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700">
                                     <ul class="py-2 text-sm text-gray-700 dark:text-gray-200" aria-labelledby="dropdown-button">
-                                    <li>
-                                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Mockups</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Templates</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Design</button>
-                                    </li>
-                                    <li>
-                                        <button type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">Logos</button>
-                                    </li>
+                                        @foreach ($searchableField as $key => $field)
+                                            <li>
+                                                <button wire:click="searchFieldChange('{{$key}}')" type="button" class="inline-flex w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">{{$field['label']}}</button>
+                                            </li>
+                                        @endforeach
                                     </ul>
                                 </div>
                                 <div class="relative w-full">
-                                    <input type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-zinc-100 rounded-r-lg border-l-zinc-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Search Mockups, Logos, Design Templates..." required>
-                                    <button type="submit" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
+                                    <input wire:model.lazy="searchQuery" type="search" id="search-dropdown" class="block p-2.5 w-full z-20 text-sm text-gray-900 bg-zinc-100 rounded-r-lg border-l-zinc-100 border-l-2 border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-zinc-500 dark:border-l-gray-700  dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:border-blue-500" placeholder="Pencarian" required>
+                                    <button type="button" class="absolute top-0 right-0 p-2.5 text-sm font-medium h-full text-white bg-blue-700 rounded-r-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800">
                                         <svg class="w-4 h-4" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
                                             <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"/>
                                         </svg>
-                                        <span class="sr-only">Search</span>
+                                        {{-- <span class="sr-only">Search</span> --}}
                                     </button>
                                 </div>
                             </div>
-                        </form>
+                        </div>
                     </div>
                 </div>
+             
 
                 <div class="relative overflow-x-auto">
                     <table class="w-full text-sm text-left text-zinc-1000" style="min-width: max-content">
@@ -65,7 +68,7 @@
                         <tbody>
                             @if ($marketings->isEmpty())
                                 <tr class="bg-white border-b border-zinc-100 hover:bg-zinc-100/50 dark:bg-zinc-700/50 dark:border-zinc-600">
-                                    <td colspan="5" class="w-4 p-4 text-center">Tidak ada data</td>
+                                    <td colspan="8" class="w-4 p-4 text-center">Tidak ada data</td>
                                 </tr>
                             @else
                                 @foreach ($marketings as $key => $marketing)
