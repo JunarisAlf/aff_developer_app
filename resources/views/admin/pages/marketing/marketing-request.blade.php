@@ -3,6 +3,6 @@
 @section('menu_title', 'Marketing | Permintaan Gabung')
 
 @section('HTML_Main')
-   @livewire('marketing.marketing-request-table')
-   @livewire('marketing.marketing-reject-modal')
+   @livewire('marketing.marketing-req.marketing-request-table')
+   @livewire('marketing.marketing-req.marketing-reject-modal')
 @endsection

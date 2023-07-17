@@ -3,6 +3,6 @@
 @section('menu_title', 'Daftar Marketing')
 
 @section('HTML_Main')
-   @livewire('marketing.marketing-list-table')
-   {{-- @livewire('marketing.marketing-reject-modal') --}}
+   @livewire('marketing.marketing-list.marketing-list-table')
+   @livewire('marketing.marketing-list.marketing-suspend-modal')
 @endsection

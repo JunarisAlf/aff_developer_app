@@ -20,18 +20,19 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <script>
         tailwind.config = {
+            important: true,
             darkMode: 'class',
-          theme: {
-            extend: {
+            theme: {
+                extend: {
             }
           }
         }
-      </script>
+    </script>
     <link rel="stylesheet" href="{{asset('mania/css/tailwind.css')}}" />
- 
     <link href="https://cdnjs.cloudflare.com/ajax/libs/flowbite/1.7.0/flowbite.min.css" rel="stylesheet" />
     <link rel="stylesheet" href="{{asset('css/custome.css')}}" />
     <link rel="stylesheet" href="https://unpkg.com/metismenujs/dist/metismenujs.min.css">
+    <script src="//unpkg.com/alpinejs" defer></script>
     @yield('page_css')
     @livewireStyles
 

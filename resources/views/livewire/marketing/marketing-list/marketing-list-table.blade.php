@@ -3,27 +3,35 @@
         <div class="card dark:bg-zinc-800 dark:border-zinc-600">
             <div class="card-body">
                 <div class="w-full overflow-x-auto">
-                    <div class="flex flex-row  gap-6 mb-8 mt-4 items-center justify-between">
-                        <div class="w-[30%] min-w-max">
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 mb-8 mt-4 items-end justify-between">
+                        
+                        <div class="col-span-1 min-w-max">
                             <div class="flex flex-row items-center gap-2">
                                 <label>Show</label>
                                 <input class="w-16 rounded border-gray-100 py-2.5 text-sm text-gray-500 focus:border focus:border-violet-500 focus:ring-0 dark:bg-zinc-700/50 dark:border-zinc-600 dark:text-zinc-100" type="number" name="paginate_count" wire:model.lazy="paginate_count" id="example-email-input">
                                 <label>Of {{$data_count}} Entries</label>
                             </div>
                         </div>
-                        <div class="w-[30%] flex items-center min-w-[250px]">
-                            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mr-3">Status</label>
-                            <select id="countries" class="bg-zinc-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" wire:model="status">
-                                <option selected>Pilih Kolom</option>
-                                @foreach ($statusSelect as $status)
-                                    <option value="{{$status['value']}}">{{$status['label']}}</option>
+
+                        <div class="col-span-1 items-center ">
+                            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mr-3">Urutkan</label>
+                            <select id="countries" class="bg-zinc-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" wire:model="shortField">
+                                @foreach ($shortableField as $key => $short)
+                                    <option value="{{$key}}">{{$short['label']}}</option>
                                 @endforeach
                             </select>
                         </div>
 
-                        <div class="w-[40%] min-w-[350px]">
+                        <div class="col-span-1 items-center ">
+                            <label for="countries" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white mr-3">Status</label>
+                            <select id="countries" class="bg-zinc-100 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-zinc-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" wire:model="isSuspended">
+                                <option value="0">Aktif</option>
+                                <option value="1">Suspended</option>
+                            </select>
+                        </div>
+
+                        <div class="col-span-1 lg:col-span-2">
                             <div class="flex">
-                                
                                 <button id="dropdown-button" data-dropdown-toggle="dropdown" class="flex-shrink-0 z-10 inline-flex items-center py-2.5 px-4 text-sm font-medium text-center text-gray-900 bg-zinc-200 border border-gray-300 rounded-l-lg hover:bg-gray-200 focus:ring-4 focus:outline-none focus:ring-gray-100 dark:bg-zinc-700 dark:hover:bg-zinc-600 dark:focus:ring-gray-700 dark:text-white dark:border-gray-600" type="button">{{$searchField['label']}}<svg class="w-2.5 h-2.5 ml-2.5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 10 6">
                                     <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="m1 1 4 4 4-4"/> </svg>
                                 </button>
@@ -56,12 +64,22 @@
                         <thead class="text-xs text-gray-700 dark:text-gray-100 uppercase bg-zinc-100/50 dark:bg-zinc-700">
                             <tr>
                                 <th scope="col" class="p-4">Nomor</th>
-                                <th scope="col" class="px-6 py-3">Nama</th>
+                                <th scope="col" class="px-6 py-3">
+                                   Nama
+                                </th>
                                 <th scope="col" class="px-6 py-3">Nomor WA</th>
-                                <th scope="col" class="px-6 py-3">Klik</th>
-                                <th scope="col" class="px-6 py-3">Submit</th>
-                                <th scope="col" class="px-6 py-3">Penjualan</th>
-                                <th scope="col" class="px-6 py-3">Bergabung</th>
+                                <th scope="col" class="px-6 py-3">
+                                    KLIK
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    SUBMIT
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    PENJUALAN
+                                </th>
+                                <th scope="col" class="px-6 py-3">
+                                    BERGABUNG
+                                </th>
                                 <th scope="col" class="px-6 py-3">Action</th>
                             </tr>
                         </thead>
@@ -111,8 +129,12 @@
                                         </td>
                                         <td class="px-6 py-4 dark:text-zinc-100/80">
                                             <button  type="button" class="btn border-0 bg-green-500 p-0 align-middle text-white focus:ring-2 focus:ring-green-500/30 hover:bg-green-600 scale-80"><i class="mdi mdi-account-details bg-white bg-opacity-20 w-10 h-full text-16 py-2 px-3 align-middle rounded-l"></i><span class="px-3 leading-[2.8]">Detail</span></button>
-
-                                            <button  type="button" class="btn border-0 bg-red-500 p-0 align-middle text-white focus:ring-2 focus:ring-red-500/30 hover:bg-red-600 scale-80" ><i class="mdi mdi-block-helper bg-white bg-opacity-20 w-10  h-full text-16 py-2 px-3 align-middle rounded-l "></i><span class="px-3 leading-[2.8]">Suspend</span></button>
+                                               
+                                            @if ($marketing->suspended)
+                                                <button wire:click="$emit('openSuspendModal',{{$marketing->id}})" type="button" class="btn border-0 bg-sky-500 p-0 align-middle text-white focus:ring-2 focus:ring-sky-500/30 hover:bg-sky-600 scale-80" ><i class="mdi mdi-block-helper bg-white bg-opacity-20 w-10  h-full text-16 py-2 px-3 align-middle rounded-l "></i><span class="px-3 leading-[2.8]">Aktifkan</span></button>
+                                            @else
+                                                <button wire:click="$emit('openSuspendModal',{{$marketing->id}})" type="button" class="btn border-0 bg-red-500 p-0 align-middle text-white focus:ring-2 focus:ring-red-500/30 hover:bg-red-600 scale-80" ><i class="mdi mdi-block-helper bg-white bg-opacity-20 w-10  h-full text-16 py-2 px-3 align-middle rounded-l "></i><span class="px-3 leading-[2.8]">Suspend</span></button>
+                                            @endif                                            
                                         </td>
                                     </tr>
                                 @endforeach

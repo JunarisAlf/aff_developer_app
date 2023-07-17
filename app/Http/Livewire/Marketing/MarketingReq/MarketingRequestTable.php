@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Livewire\Marketing;
+namespace App\Http\Livewire\Marketing\MarketingReq;
 
 use App\Models\User;
 use Exception;
@@ -30,6 +30,6 @@ class MarketingRequestTable extends Component{
         $this->emit('openRejectModal', $id);
     }
     public function render(){
-        return view('livewire.marketing.marketing-request-table');
+        return view('livewire.marketing.marketing-req.marketing-request-table');
     }
 }
