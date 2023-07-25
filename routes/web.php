@@ -3,6 +3,7 @@
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\CabangController;
 use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\PropertyController;
 use App\Http\Controllers\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -33,5 +34,9 @@ Route::middleware('auth')->group(function(){
     Route::prefix('/marketing')->group(function(){
         Route::get('/daftar-marketing',  [UserController::class, 'marketingList'])->name('admin.marketing.list');
         Route::get('/permintaan-gabung',  [UserController::class, 'marketingRequest'])->name('admin.marketing.request');
+    });
+
+    Route::prefix('/property')->group(function(){
+        Route::get('/daftar-property',  [PropertyController::class, 'propertyList'])->name('admin.property.list');
     });
 });
